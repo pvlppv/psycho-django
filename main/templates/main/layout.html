@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+{% block lang %}{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Thoughty App">
+    <meta name="description" content="Thoughty App">
+    <meta name="keywords" content="Psychology">
+    <!-- =============== TITLE =============== -->
+    <title>{% block title %} Thoughty {% endblock %}</title>
+    <!-- =============== X-ICON =============== -->
+    <link rel="icon" type="image/png" href="{% static 'main/img/x-icon.png' %}">
+    <!-- =============== ICONS =============== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- =============== CSS =============== -->
+    {% block css %}{% endblock %}
+</head>
+<body hidden>
+    {% block body %}
+    {% endblock %}
+    <!-- =============== SCRIPTS =============== -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'main/js/main.js' %}"></script>
+    <script src="{% static 'main/js/theme.js' %}"></script>    
+    <script src="{% static 'main/js/settings.js' %}"></script>
+    <script src="{% static 'main/js/lang.js' %}"></script>
+    <script src="{% static 'main/js/popup.js' %}"></script>
+    <script src="{% static 'main/js/validation.js' %}"></script>
+    <!-- {% if language == 'ru' %} -->
+    <script src="{% static 'main/js/messages_ru.js' %}"></script>
+    <!-- {% else %} -->
+        <!-- <script src="{% static 'main/js/messages_en.js' %}"></script> -->
+    <!-- {% endif %} -->
+    {% block script %}{% endblock %}
+</body>
+</html>

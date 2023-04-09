@@ -1,0 +1,176 @@
+{% extends "main/layout.html" %}
+
+{% block lang %}<html lang="en">{% endblock %}
+
+{% block title %} Thoughty {% endblock %}
+
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'main/css/main.css' %}">{% endblock %}
+
+{% block body %}
+<main>
+    <section class="hero">
+        <div class="hero-settings-user-popup-background"></div>
+        <div class="hero-title">
+            <h1 class="hero-title2">Thoughty</h1>
+            <p class="hero-description">- it's an endless feed of anonymous posts where everyone can pour out their souls</p> 
+            <div class="hero-settings">
+                <i id="hero-settings-about" class="hero-settings-about bx bx-info-circle"></i>
+                <i id="hero-settings-theme" class='hero-settings-theme bx bxs-sun'></i>
+                <i id="hero-settings-lang" class='hero-settings-lang bx bx-world'></i>
+                <i id="hero-settings-user" class='hero-settings-user bx bx-user' ></i>
+                <div id="hero-settings-about-window" class="hero-settings-about-window" style="display: none;">
+                    <h1 class="hero-settings-about-window-title">About</h1>
+                    <p class="hero-settings-about-window-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur orci eget sagittis accumsan. Integer eu quam nisl. Donec eget ex nec nibh tempor blandit eget eget augue. Sed orci arcu, fringilla sit amet odio ornare, tincidunt sodales odio. Sed nec ornare ligula. Sed a sodales erat, a rutrum leo. Donec id sem velit. Vestibulum egestas elit nunc, sit amet volutpat odio ornare ac. Quisque vel magna elementum, tempor elit ut, mollis dolor. Nam et felis ornare mi tempor interdum quis nec dolor.<br><br>Integer ac felis placerat, egestas risus in, ultricies nisi. Vestibulum cursus, elit in ullamcorper vehicula, justo est molestie nisl, quis sollicitudin mauris leo ut erat. Vestibulum vel felis eget nibh faucibus maximus eu non magna. Donec pellentesque tempor mauris. Aenean accumsan dictum lectus. Aenean at nisl et elit interdum mollis quis eu metus. Mauris felis sapien, pharetra eu faucibus dictum, finibus ac dui. In id cursus dolor. Sed condimentum massa non molestie feugiat.</p>
+                    <div class="hero-settings-about-window-support">
+                        <a href="" target="_blank"><button class="hero-settings-about-window-support-text">Написать нам</button></a>
+                        <a href="https://pay.cloudtips.ru/p/c0aa205a" target="_blank"><button class="hero-settings-about-window-support-support">Поддержать проект</button></a>    
+                    </div>
+                    <div class="hero-settings-about-window-socials">
+                        <a href="https://telegram.org" class="hero-settings-about-window-socials-social" target="_blank"><i class='hero-settings-about-social-icon bx bxl-telegram'></i></a>
+                        <a href="https://vk.com" class="hero-settings-about-window-socials-social" target="_blank"><i class='hero-settings-about-social-icon bx bxl-vk'></i></a>
+                    </div>
+                    <div class="hero-settings-about-window-footer">
+                        <div class="hero-settings-about-window-politics">
+                            <a class="hero-settings-about-window-politics-terms" href="" target="_blank">Условия</a>
+                            <a class="hero-settings-about-window-politics-privacy" href="" target="_blank">Конфидециальность</a>
+                        </div>  
+                        <p class="hero-settings-about-window-copyright">&copy; 2023 Thoughty - All Rights Reserved.</p>  
+                    </div>
+                </div>    
+                <div id="hero-settings-lang-window" class="hero-settings-lang-window" style="display: none;">
+                    {% if user.is_authenticated %}
+                        <h1 class="hero-settings-lang-window-title">Язык</h1>
+                        <div class="hero-settings-lang-window-lang">
+                            <a href="#" data-language='en'><img class="hero-settings-lang-window-lang-en" src="{% static 'main/img/en.png' %}" alt="English"></a>
+                            <a href="#" data-language='ru'><img class="hero-settings-lang-window-lang-ru" src="{% static 'main/img/ru.png' %}" alt="Russian"></a>
+                        </div>
+                    {% else %}
+                        <h1>Для начала - зарегестрируйтесь.</h1>
+                    {% endif %}
+                </div>  
+                <div id="hero-settings-user-window" class="hero-settings-user-window" style="display: none;">
+                    {% if user.is_authenticated %}
+                        <div class="hero-settings-user-window-profile">
+                            <div class="hero-settings-user-window-profile-id">
+                                <h1 class="hero-settings-user-window-profile-id-text">Ваш ID: {{ user.username }}</h1>
+                                <button class="hero-settings-user-window-profile-id-button">Изменить ID</button>    
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button class="hero-settings-user-window-logout-button" type="submit" name="logout">Logout</button>
+                            </form>    
+                        </div>
+                    {% else %}
+                        <form class="hero-settings-user-window-registration" method="post">
+                            {% csrf_token %}
+                            <div class="hero-settings-user-window-registration-title">Регистрация</div>   
+                            <div class="hero-settings-user-window-registration-inputs">
+                                {{ formRegistration.username }} 
+                                {% if formRegistration.username.errors %}
+                                    <div class="hero-settings-user-window-error">{{ formRegistration.username.errors }}</div>
+                                {% endif %}
+                                {{ formRegistration.password1 }}
+                                {{ formRegistration.password2 }}
+                                {% if formRegistration.password1.errors or formRegistration.password2.errors %}
+                                    <div class="hero-settings-user-window-error">
+                                        {{ formRegistration.password1.errors }}
+                                        {{ formRegistration.password2.errors }}
+                                    </div>
+                                {% endif %}
+                                <div class="hero-settings-user-window-registration-password-show-flex">
+                                    <input type="checkbox" class="hero-settings-user-window-registration-password-show-checkbox" id="password-checkbox">
+                                    <label class="hero-settings-user-window-registration-password-show-text" for="password-checkbox">Показать пароль</label>
+                                </div>                            
+                            </div>
+                            <button class="hero-settings-user-window-registration-button" type="submit" name="register">Зарегестрироваться</button>   
+                        </form>
+                        <div class="hero-settings-user-window-line"></div>
+                        <form class="hero-settings-user-window-login" method="post">
+                            {% csrf_token %}
+                            <div class="hero-settings-user-window-login-title">Вход</div>   
+                            <div class="hero-settings-user-window-login-inputs">
+                                {{ formLogin.username }}
+                                {{ formLogin.password }}
+                                {% if formLogin.non_field_errors %}
+                                    <div class="hero-settings-user-window-error">
+                                        {% for error in formLogin.non_field_errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="hero-settings-user-window-login-footer">
+                                <button class="hero-settings-user-window-login-button" type="submit" name="login">Войти</button>  
+                                <div class="hero-settings-user-window-login-remember">
+                                    {{ formLogin.remember_me }}
+                                    <label class="hero-settings-user-window-login-remember-text" for="remember_me-checkbox">Запомнить</label>
+                                </div>
+                            </div> 
+                            <!-- <a class="hero-settings-user-window-login-forget" href="#">Забыли ID или пароль?</a>                    -->
+                        </form>
+                    {% endif %}
+                </div>
+                <div class="hero-settings-user-popup">
+                    <h2>Условия использования</h2>
+                    <p> 1. Вы обязуетесь не нарушать законы вашей страны при использовании приложения Thoughty.
+                        <br>2. Вы соглашаетесь не использовать Thoughty для распространения нелегального контента или любой другой информации, которая нарушает права других людей.
+                        <br>3. Вы понимаете и соглашаетесь с тем, что любая информация, которую вы публикуете в Thoughty, будет доступна другим пользователям приложения и может быть использована ими.
+                        <br>4. Вы соглашаетесь не публиковать никакой конфиденциальной информации, включая личные данные и данные других людей, без их явного согласия.
+                        <br>5. Создатели приложения Thoughty не несут ответственности за любой контент, публикуемый пользователями, и не могут гарантировать достоверность этой информации.
+                        <br>6. Создатели приложения Thoughty имеют право удалить любой контент, который нарушает эти условия использования, без уведомления пользователя.
+                        <br>7. Создатели приложения Thoughty могут изменять условия использования в любое время, без предварительного уведомления пользователей.
+                    </p>
+                    <h2>Политика конфиденциальности</h2>
+                    <p>
+                        <br>Мы, разработчики приложения Thoughty, уважаем вашу конфиденциальность и стремимся обеспечить максимальную безопасность и защиту ваших личных данных при использовании нашего приложения. Мы полностью придерживаемся требований законодательства о защите персональных данных и делаем все возможное, чтобы обеспечить безопасность хранения и обработки ваших личных данных.
+                        <br>1. Сбор информации
+                        <br>Мы можем собирать определенную информацию о вас при использовании нашего приложения, например, ваше имя, адрес электронной почты и другие данные, которые вы добровольно предоставляете при регистрации в приложении.
+                        <br>2. Использование информации
+                        <br>Мы можем использовать вашу информацию, чтобы связаться с вами по поводу вашей учетной записи в нашем приложении, чтобы обеспечить вам лучший опыт использования нашего приложения, а также для анализа и улучшения наших услуг.
+                        <br>3. Хранение информации
+                        <br>Мы храним вашу информацию на серверах, которые защищены соответствующими мерами безопасности, чтобы предотвратить несанкционированный доступ, использование, изменение, разглашение или уничтожение ваших личных данных.
+                        <br>4. Раскрытие информации третьим сторонам
+                        <br>Мы не раскрываем вашу информацию третьим сторонам, кроме случаев, когда это необходимо для обеспечения функционирования нашего приложения, в соответствии с законодательством или если вы дали согласие на такую передачу данных.
+                        <br>5. Анонимность пользователей
+                        <br>Мы не храним информацию, которая может идентифицировать вас лично или связать вас с вашими постами на нашей платформе. Вся информация, которую вы размещаете в Thoughty, анонимна.
+                        <br>6. Конфиденциальность не гарантирована
+                        <br>Хотя мы принимаем все необходимые меры для защиты вашей информации, мы не можем гарантировать полную безопасность вашей информации. Пожалуйста, будьте осторожны при размещении информации в Thoughty, и не делитесь личными данными, которые могут привести к раскрытию вашей личности.
+                    </p>
+                    <button class="hero-settings-user-popup-accept">Принять</button>                
+                </div>
+            </div>       
+        </div>
+        <div class="hero-feed">
+            <div id="hero-feed-2" class="hero-feed-2">
+                {% for message in messages %}
+                <div class="hero-feed-message">
+                    <i class='hero-feed-message-pic bx bxs-user'></i>                        
+                    <div class="hero-feed-message-text">
+                        <div class="hero-feed-message-text-1">
+                            <div class="hero-feed-message-text-1-username">Аноним</div>
+                            <div class="hero-feed-message-text-1-time">{{ message.created_at|timesince }}</div>
+                        </div>
+                        <div id="hero-feed-message-text-2" class="hero-feed-message-text-2">
+                            {{ message.message_text }}
+                        </div>
+                    </div>
+                    <div class="hero-feed-message-tools">
+                        <i class='hero-feed-message-share bx bx-share'></i>
+                        <i class='hero-feed-message-report bx bx-error'></i>
+                        <i class='hero-feed-message-delete bx bx-x'></i>    
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <form id="hero-feed-send" class="hero-feed-send" method="post">
+            {% csrf_token %}
+            {{ form_lobby.message_text }}
+            <span>{{ error }}</span>
+            <button id="hero-feed-send-button" class="hero-feed-send-button" type="submit">Отправить</button>    
+        </form>
+    </section>
+</main>
+{% endblock %}
+

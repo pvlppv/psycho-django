@@ -1,0 +1,551 @@
+/*=============== ASSETS ===============*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+:root {
+    --app-height: 100%;
+
+    --black-color: #000000;
+    --white-color: #FFFFFF;
+    --shadow-white-color: rgba(255, 255, 255, 0.15);
+    --shadow-black-color: rgba(0, 0, 0, 0.15);
+
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semi-bold: 600;
+    --fw-bold: 700;
+    --fw-extra-bold: 800;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::selection {
+    color: var(--black-color);
+    background: var(--white-color);
+}
+::-moz-selection { /* for Firefox */
+    color: var(--black-color);
+    background: var(--white-color);
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+}
+main {
+    position: relative;
+    overflow: hidden;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*=============== ASSETS ===============*/
+
+body {
+    background: var(--black-color);
+    transition: background 0.5s ease, color 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+}
+section {
+    width: 100vw;
+    height: 100vh;
+    height: var(--app-height);
+}
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.hero-title2 {
+    color: var(--white-color);
+    font-size: 5rem;
+    text-shadow: 0px 0px 25px var(--shadow-white-color), 0px 15px 25px var(--shadow-white-color);
+}
+.hero-description {
+    color: var(--white-color);
+    font-size: 1rem;
+    font-weight: var(--fw-semi-bold);
+    text-shadow: 0px 0px 25px var(--shadow-white-color), 0px 15px 25px var(--shadow-white-color);
+}
+.hero-feed {
+    width: 50rem;
+    height: 30rem;
+    overflow-y: scroll;
+    border: 1px solid var(--white-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    padding: 2rem 2rem;
+}
+.hero-feed-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.hero-feed-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+.hero-feed-message-pic {
+    margin-top: 0.4rem;
+    font-size: 1.5rem;
+    color: var(--white-color);
+}
+.hero-feed-message-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: var(--white-color);
+    font-size: 0.8rem;
+}
+.hero-feed-message-text-1 {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.hero-feed-message-text-1-username {
+    font-weight: var(--fw-semi-bold);
+}
+.hero-feed-message-text-1-time {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+.hero-feed-message-tools {
+    display: flex;
+    align-items: center;
+    margin-top: 0.8rem;
+    margin-left: auto;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    opacity: 0;
+    transition: opacity 0.1s ease-in;
+}
+.hero-feed-message-share {
+    cursor: pointer;
+}
+.hero-feed-message-report {
+    cursor: pointer;
+}
+.hero-feed-message-delete {
+    cursor: pointer;
+}
+.hero-feed-message:hover .hero-feed-message-tools {
+    opacity: 1;
+}
+.hero-feed-message-text-2 {
+    opacity: 1;
+}
+.hero-feed-send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+}
+.hero-feed-send-input {
+    width: 20rem;
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    padding: 1rem;
+    resize: both;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
+.hero-feed-send-input::placeholder {
+    color: var(--white-color);
+    opacity: 1; /* This is necessary for Firefox */
+}
+.hero-feed-send-button {
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    width: 7rem;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
+.hero-settings {
+    display: flex;
+    color: var(--white-color);
+    font-size: 1.2rem;
+    gap: 1rem;
+}
+.hero-settings-about {
+    cursor: pointer;
+}
+.hero-settings-about-window {
+    position: absolute;
+    top: 57.3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--black-color);
+    z-index: 1;
+    width: 50rem;
+    height: 30rem;
+    border: 1px solid var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    padding: 2rem 2rem;
+    transition: background 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.hero-settings-about-window-text {
+    font-size: 0.8rem;
+}
+.hero-settings-about-window-socials {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+}
+.hero-settings-about-window-socials-social {
+    color: var(--white-color);
+}
+.hero-settings-about-window-support {
+    display: flex;
+    gap: 2rem;
+}
+.hero-settings-about-window-support-text,
+.hero-settings-about-window-support-support {
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    width: 10rem;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    font-size: 0.8rem;
+    transition: background 0.5s ease;
+}
+.hero-settings-about-window-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+.hero-settings-about-window-politics {
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.6rem;
+}
+.hero-settings-about-window-politics-terms,
+.hero-settings-about-window-politics-privacy {
+    color: var(--white-color);
+    text-decoration: underline;
+}
+.hero-settings-about-window-copyright {
+    color: var(--white-color);
+    font-size: 0.7rem;
+    margin-top: auto;
+}
+.hero-settings-theme {
+    cursor: pointer;
+}
+.hero-settings-lang {
+    cursor: pointer;
+}
+.hero-settings-lang-window {
+    position: absolute;
+    top: 57.3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--black-color);
+    z-index: 1;
+    width: 50rem;
+    height: 30rem;
+    border: 1px solid var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    padding: 2rem 2rem;
+    transition: background 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.hero-settings-lang-window-lang {
+    display: flex;
+    gap: 2rem;
+}
+.hero-settings-lang-window-lang-en,
+.hero-settings-lang-window-lang-ru {
+    width: 2rem;
+    border: 1px solid var(--white-color);
+    border-radius: 10%;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    cursor: pointer;
+}
+.hero-settings-user {
+    cursor: pointer;
+}
+.hero-settings-user-window {
+    position: absolute;
+    top: 57.3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--black-color);
+    z-index: 1;
+    width: 50rem;
+    height: 30rem;
+    border: 1px solid var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    padding: 2rem 2rem;
+    transition: background 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+.hero-settings-user-window-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.hero-settings-user-window-profile-id {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.hero-settings-user-window-profile-id-text {
+    font-size: 1rem;
+}
+.hero-settings-user-window-profile-id-button {
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    width: 10rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
+.hero-settings-user-window-logout-button {
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    width: 10rem;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
+.hero-settings-user-window-registration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.hero-settings-user-window-registration-title {
+    font-weight: var(--fw-semi-bold);
+}
+.hero-settings-user-window-registration-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.hero-settings-user-window-registration-username, 
+.hero-settings-user-window-registration-password {
+    width: 15rem;
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    padding: 1rem;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
+.hero-settings-user-window-registration-username {
+    cursor: not-allowed;
+}
+.hero-settings-user-window-error {
+    color: red;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.3rem;
+}
+.hero-settings-user-window-registration-password-show-flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+}
+input[type=checkbox] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--white-color);
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+} 
+input[type=checkbox]:checked::before {
+    position: absolute;
+    content: "\2713";
+    color: var(--white-color);
+    top: 0px;
+    left: 2.5px;
+}  
+.hero-settings-user-window-registration-password-show-text {
+    cursor: pointer;
+}
+.hero-settings-user-window-registration-button {
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    width: 10rem;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
+.hero-settings-user-window-line {
+    height: 100%;
+    border: 0.1px solid var(--white-color);
+}
+.hero-settings-user-window-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.hero-settings-user-window-login-title {
+    font-weight: var(--fw-semi-bold);
+}
+.hero-settings-user-window-login-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.hero-settings-user-window-login-username,
+.hero-settings-user-window-login-password {
+    width: 15rem;
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    padding: 1rem;
+    resize: both;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
+.hero-settings-user-window-login-button {
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    width: 10rem;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
+.hero-settings-user-window-login-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.hero-settings-user-window-login-remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+}
+.hero-settings-user-window-login-remember-text {
+    cursor: pointer;
+}
+.hero-settings-user-window-login-forget {
+    color: var(--white-color);
+    text-decoration: underline;
+    font-size: 0.8rem;
+}
+.hero-settings-user-popup-background {
+    position: absolute;
+    background: var(--white-color);
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+}
+.hero-settings-user-popup {
+    position: fixed;
+    top: 57.3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--black-color);
+    z-index: 2;
+    width: 50rem;
+    height: 30rem;
+    border: 1px solid var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    padding: 2rem 2rem;
+    transition: background 0.5s ease;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    overflow-y: scroll;
+    font-size: 0.8rem;
+}
+.hero-settings-user-popup-accept {
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+    background: var(--black-color);
+    color: var(--white-color);
+    width: 12rem;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px var(--shadow-white-color), 0px 10px 20px var(--shadow-white-color);
+    transition: background 0.5s ease;
+}
